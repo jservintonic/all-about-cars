@@ -5,9 +5,6 @@ include_once("sendEmail.php");
 require("utilities.php");
 include 'database.php';
 
-// TODO: Extract $_POST variables, check they're OK, and attempt to create
-// an account. Notify user of success/failure and redirect/give navigation
-// options.
 
 // check is the textboxs are empty or not
 function isDataValid($conn)

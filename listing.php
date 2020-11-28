@@ -97,9 +97,6 @@
   $end_time = new DateTime($listing_end);
   $now = new DateTime(date("Y-m-d H:i:s"));
 
-  // TODO: Note: Auctions that have ended may pull a different set of data,
-  //       like whether the auction ended in a sale or was cancelled due
-  //       to lack of high-enough bids. Or maybe not.
   
   // Calculate time to auction end:
   if ($now < $end_time) {
@@ -107,9 +104,6 @@
     $time_remaining = ' (in ' . display_time_remaining($time_to_end) . ')';
   }
   
-  // TODO: If the user has a session, use it to make a query to the database
-  //       to determine if the user is already watching this item.
-  //       For now, this is hardcoded.
 
   // Check if user is logged in (has session)
   if (isset($_SESSION['logged_in']) and ($_SESSION['logged_in'] == true)) {
@@ -147,8 +141,7 @@
   </div> <!-- END Left col -->
   <div class="col-sm-4 align-self-center"> <!-- Right col -->
 <?php
-  /* The following watchlist functionality uses JavaScript, but could
-     just as easily use PHP as in other places in the code */
+
   if ($now < $end_time):
 ?>
 
@@ -400,7 +393,7 @@
 function addToWatchlist(button) {
   console.log("These print statements are helpful for debugging btw");
 
-  // This performs an asynchronous call to a PHP function using POST method.
+  // This performs call to a PHP function using POST method.
   // Sends item ID as an argument to that function.
   $.ajax('watchlist_funcs.php', {
     type: "POST",
@@ -432,7 +425,7 @@ function addToWatchlist(button) {
 } // End of addToWatchlist func
 
 function removeFromWatchlist(button) {
-  // This performs an asynchronous call to a PHP function using POST method.
+  // This performs call to a PHP function using POST method.
   // Sends item ID as an argument to that function.
   $.ajax('watchlist_funcs.php', {
     type: "POST",

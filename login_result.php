@@ -4,8 +4,6 @@ include_once("header.php");
 include 'database.php';
 require("utilities.php");
 
-// TODO: Extract $_POST variables, check they're OK, and attempt to login.
-// Notify user of success/failure and redirect/give navigation options.
 
 // Check user inputs and throw custom error messages
 function isDataValid()

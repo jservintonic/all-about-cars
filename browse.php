@@ -4,21 +4,18 @@ include_once("header.php"); require("utilities.php"); include 'database.php';
 
   // Retrieve information from the URL
   if (!isset($_GET['keyword'])) {
-      // TODO: Define behavior if a keyword has not been specified.
       $keyword = null;
   } else {
       $keyword = $_GET['keyword'];
   }
 
   if (!isset($_GET['cat'])) {
-      // TODO: Define behavior if a category has not been specified.
       $category = null;
   } else {
       $category = $_GET['cat'];
   }
 
   if (!isset($_GET['order_by'])) {
-      // TODO: Define behavior if an order_by value has not been specified.
       $ordering = null;
   } else {
       $ordering = $_GET['order_by'];

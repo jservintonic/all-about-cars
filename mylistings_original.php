@@ -9,14 +9,12 @@
 
 if (!isset($_GET['cat'])) {
   $category = NULL;
-  // TODO: Define behavior if a category has not been specified.
 } else {
   $category = $_GET['cat'];
 }
 
 if (!isset($_GET['order_by'])) {
   $ordering = NULL;
-  // TODO: Define behavior if an order_by value has not been specified.
 } else {
   $ordering = $_GET['order_by'];
 }
@@ -89,8 +87,7 @@ if (!isset($_GET['page'])) {
 </div> <!-- end search specs bar -->
 
 <?php
-    /* TODO: If there is no form data entered,
-       decide on appropriate default value/default query to make. */
+    
 
    $query_condition = "";
 

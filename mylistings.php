@@ -25,16 +25,9 @@ if (isset($_SESSION['userID'])) {
 <ul class="list-group">
 
 <?php
-  // This page is for showing a user the auction listings they've made.
-  // It will be pretty similar to browse.php, except there is no search bar.
-  // This can be started after browse.php is working with a database.
-  // Feel free to extract out useful functions from browse.php and put them in
-  // the shared "utilities.php" where they can be shared by multiple files.
 
-  // TODO: Check user's credentials (cookie/session).
     $id = $_SESSION['userID'];
 
-  // TODO: Perform a query to pull up their auctions.
   $query = "";
   if (isset($_SESSION['account_type']) && $_SESSION['account_type'] == 'seller') {
       $query = "SELECT i.itemID, itemName, description, categoryID, IFNULL(b.numBid, 0) as numBid, IFNULL(b.currentPrice, i.startPrice) as currentPrice, DATE_FORMAT(endDate, '%Y-%m-%dT%H:%i:%s') as endDate
@@ -62,16 +55,16 @@ if (isset($_SESSION['userID'])) {
 
 
       
-      // // get sold items for seller
+      // get sold items for seller
       $sql = "SELECT p.itemID AS itemID
             FROM purchase p
             INNER JOIN bids b ON p.itemID = b.itemID
             INNER JOIN items i ON b.itemID = i.itemID
             WHERE i.sellerEmail = '$id';";
       $sold_result = mysqli_query($conn, $sql);
-      // //$sold_list = mysqli_fetch_assoc($sold_result);
+      // $sold_list = mysqli_fetch_assoc($sold_result);
 
-      // // array of all sold items
+      // array of all sold items
       $sold_list = array();
       while ($row_temp2 = mysqli_fetch_assoc($sold_result)) {
           $sold_list[] = $row_temp2["itemID"];

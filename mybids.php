@@ -23,16 +23,11 @@ if (isset($_SESSION['userID'])) {
 <ul class="list-group">
 
 <?php
-  // This page is for showing a user the auctions they've bid on.
-  // It will be pretty similar to browse.php, except there is no search bar.
-  // This can be started after browse.php is working with a database.
-  // Feel free to extract out useful functions from browse.php and put them in
-  // the shared "utilities.php" where they can be shared by multiple files.
 
-  // TODO: Check user's credentials (cookie/session).
+  // Check user's credentials (cookie/session).
   $id = $_SESSION['userID'];
 
-  // TODO: Perform a query to pull up the auctions they've bidded on.
+  // Perform a query to pull up the auctions they've bidded on.
   $query = "";
   if (isset($_SESSION['account_type']) && $_SESSION['account_type'] == 'buyer') {
       $query = "SELECT i.itemID, itemName, description, categoryID, DATE_FORMAT(endDate, '%Y-%m-%dT%H:%i:%s') as endDate, IFNULL(c.numBid, 0) as numBid, c.currentPrice, b.buyerEmail
@@ -53,7 +48,7 @@ if (isset($_SESSION['userID'])) {
       $query_for_each_page = $query . " LIMIT $start_record, $results_per_page";
       $result = mysqli_query($conn, $query_for_each_page) or die($conn->error);
 
-      // TODO: Loop through results and print them out as list items.
+      // Loop through results and print them out as list items.
       while ($row = $result->fetch_assoc()) {
           print_listing_li($row["itemID"], $row["itemName"], $row["description"], $row["currentPrice"], $row["numBid"], $row["endDate"]);
       }

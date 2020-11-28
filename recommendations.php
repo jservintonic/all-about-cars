@@ -4,11 +4,6 @@
 
 
 <?php
-  // This page is for showing a buyer recommended items based on their bid 
-  // history. It will be pretty similar to browse.php, except there is no 
-  // search bar. This can be started after browse.php is working with a database.
-  // Feel free to extract out useful functions from browse.php and put them in
-  // the shared "utilities.php" where they can be shared by multiple files.
 
   //Initialise all variables with null, so they can be overwritten later.
 
@@ -16,7 +11,6 @@
     $category = null;
     $ordering = null;
   
-  // TODO: Check user's credentials (cookie/session).
  
   if(!isset($_SESSION))
   {
@@ -27,10 +21,6 @@
     ;
   }
 
-  // TODO: Perform a query to pull up auctions they might be interested in.
-  //Show auctions, that user has not yet bid on. Show auctions, that have same category as the item he already has bid on.
-  
-  // TODO: Loop through results and print them out as list items.
 
 
 ?>
@@ -39,19 +29,16 @@
 <?php 
   // Retrieve these from the URL
   if (!isset($_GET['keyword'])) {
-      // TODO: Define behavior if a keyword has not been specified.
   } else {
       $keyword = $_GET['keyword'];
   }
 
   if (!isset($_GET['cat'])) {
-      // TODO: Define behavior if a category has not been specified.
   } else {
       $category = $_GET['cat'];
   }
 
   if (!isset($_GET['order_by'])) {
-      // TODO: Define behavior if an order_by value has not been specified.
   } else {
       $ordering = $_GET['order_by'];
   }

@@ -22,14 +22,7 @@ if (isset($_SESSION['userID'])) {
 <ul class="list-group">
 
 <?php
-  // This page is for showing a user the auction listings they've made.
-  // It will be pretty similar to browse.php, except there is no search bar.
-  // This can be started after browse.php is working with a database.
-  // Feel free to extract out useful functions from browse.php and put them in
-  // the shared "utilities.php" where they can be shared by multiple files.
-
-  // TODO: Check user's credentials (cookie/session).
-  // Save current seller ID as variable $id for later use in functions
+ 
     $id = $_SESSION['userID'];
 
   // Find out which items the buyer has placed bids on
@@ -71,7 +64,6 @@ if (isset($_SESSION['userID'])) {
           $sold_list[] = $row_temp["itemID"];
       }
 
-      // TODO: Loop through results and print them out as list items.
       while ($row = $result->fetch_assoc()) {
           // if item is sold call funtion with sold ribbon
           if (in_array($row["itemID"], $sold_list)) {

@@ -9,8 +9,7 @@ include_once("header.php")
 
 // This function takes the form data and adds the new auction to the database.
 
-/*  Connect to MySQL database (perhaps by requiring a file that
-    already does this). */
+/*  Connect to MySQL database */
 
     include 'database.php';
             
@@ -41,7 +40,7 @@ function isDataValid()
 
     //Check each element of the $content_check array for errors
     foreach ($content_check as $x => $val) {
-        // Check, if all required inputs have been entered. Do not include columns that are optional.
+        // Check, if all required inputs have been entered
         if (!in_array($x, ['description', 'Colour', 'auctionReservePrice'])) {
             if (!isset($_POST[$val['postName']]) or trim($_POST[$val['postName']]) == '') {
                 $errorMessage .= 'You must enter <b>' . $val['UI name'] . '</b>. <br/>';
@@ -59,8 +58,7 @@ function isDataValid()
         }
 
 
-        // Validate the input length for the user inputs. This is important, as the maximum number of characters must not exceed the length of the attribute defined in the database.
-        if (strlen($_POST[$val['postName']]) > $val['length']) {
+        // Validate the input length for the user inputs. 
             $errorMessage .= '<b>' . $val['UI name'] . ': </b> cannot be greater than '. $val['length'] .' characters <br/>';
             
         }
@@ -160,8 +158,6 @@ function saveToDatabase($conn)
             }
         }
     }
-    //Move the uploaded files to a specific directory inside the www folder. This makes sure that the uploaded images can actually be used, even if 
-    //they are initially stored outside the www directory. 
     if($_SERVER['REQUEST_METHOD'] == "POST") {
         //Specify image directory.
         $image_dir = 'images/';
@@ -235,7 +231,7 @@ function saveToDatabase($conn)
     $reservePrice = $_POST['auctionReservePrice'];
 
 
-    //Assign NULL to all optional integer values, if user decides to skip them. We must do this, as the SQL syntax is unable to insert empty spaces for integers. We must use null instead.
+    //Assign NULL to all optional integer values, if user decides to skip them.
     $doors = !empty($doors)? "$doors": "NULL";
     $seats = !empty($seats)? "$seats": "NULL";
     $reservePrice = !empty($reservePrice)? "$reservePrice": "NULL";
@@ -249,7 +245,6 @@ function saveToDatabase($conn)
 
  
 
-/* If everything looks good, make the appropriate call to insert data into the database. */
     //The SQL function now() is used to determine the starting date of an auction.
 
     $sql = "INSERT INTO items (`itemName`, `sellerEmail`, `image1`, `image2`, `image3`, `description`, `categoryID`, `conditionOfUse`, `colour`, `gearbox`, `fuelType`, `initialReg`, `doors`, `seats`, `mileage`, `acceleration0to60mph`, `topSpeedMph`, `enginePowerBhp`, `startPrice`, `reservePrice`, `startDate`, `endDate`) 

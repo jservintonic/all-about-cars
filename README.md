@@ -1,2 +1,9 @@
 # Auction Website for cars.
-Connected hosted locally
+Hosted locally via an Apache Server and a MySQL Database.
+
+Features:
+- Users can sing up as one out of two or both user types/roles: Seller and Buyer
+- Sellers are able to create auctions (with cars)
+- Buyers are allowed to bid on lostings until they expire
+- Buyers are able to add items on a watchlist
+- Buyers and sellers receive email notifications about the status of their listings

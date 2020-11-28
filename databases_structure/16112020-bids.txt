@@ -1,0 +1,29 @@
+--
+-- Database: `auction`
+--
+
+-- --------------------------------------------------------
+
+
+CREATE TABLE `bids` (
+  `bidID` int(11) NOT NULL,
+  `buyerID` int(11) NOT NULL,
+  `itemID` int(11) NOT NULL,
+  `bidPrice` decimal(8,2) NOT NULL,
+  `bidDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `bids`
+  ADD PRIMARY KEY (`bidID`) USING BTREE,
+  ADD KEY `fk_buyerID_bids` (`buyerID`),
+  ADD KEY `fk_itemID_bids` (`itemID`);
+
+
+ALTER TABLE `bids`
+  MODIFY `bidID` int(11) NOT NULL AUTO_INCREMENT;
+
+
+ALTER TABLE `bids`
+  ADD CONSTRAINT `fk_buyerID_bids` FOREIGN KEY (`buyerID`) REFERENCES `buyer` (`buyerID`),
+  ADD CONSTRAINT `fk_itemID_bids` FOREIGN KEY (`itemID`) REFERENCES `items` (`itemID`);

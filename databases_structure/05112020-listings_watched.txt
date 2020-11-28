@@ -1,0 +1,48 @@
+--
+-- Database: `auction`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `listings_watched`
+--
+
+CREATE TABLE `listings_watched` (
+  `watchID` int(11) NOT NULL,
+  `buyerID` int(11) NOT NULL,
+  `itemID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `listings_watched`
+--
+ALTER TABLE `listings_watched`
+  ADD PRIMARY KEY (`watchID`),
+  ADD KEY `fk_buyerID_listings_watched` (`buyerID`),
+  ADD KEY `fk_itemID_listings_watched` (`itemID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `listings_watched`
+--
+ALTER TABLE `listings_watched`
+  MODIFY `watchID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `listings_watched`
+--
+ALTER TABLE `listings_watched`
+  ADD CONSTRAINT `fk_buyerID_listings_watched` FOREIGN KEY (`buyerID`) REFERENCES `buyer` (`buyerID`),
+  ADD CONSTRAINT `fk_itemID_listings_watched` FOREIGN KEY (`itemID`) REFERENCES `items` (`itemID`);

@@ -1,0 +1,50 @@
+--
+-- Database: `auction`
+--
+
+-- --------------------------------------------------------
+
+
+CREATE TABLE `items` (
+  `itemID` int(11) NOT NULL,
+  `itemName` varchar(20) NOT NULL,
+  `sellerID` int(11) NOT NULL,
+  `image_1` longblob NOT NULL,
+  `image_2` longblob NOT NULL,
+  `image_3` longblob NOT NULL,
+  `description` text NOT NULL,
+  `categoryID` int(5) NOT NULL,
+  `conditionOfUse` varchar(100) NOT NULL,
+  `colour` VARCHAR(30) DEFAULT NULL,
+  `gearbox` VARCHAR(30) NOT NULL,
+  `fuel_type` VARCHAR(30) NOT NULL,
+  `initial_reg` INT(10) NOT NULL,
+  `mileage` INT(10) NOT NULL,
+  `doors` INT(3) DEFAULT NULL,
+  `seats` INT(3) DEFAULT NULL,
+  `acceleration_0_60_mph` VARCHAR(5) DEFAULT NULL,
+  `drivertrain` VARCHAR(30) DEFAULT NULL,
+  `top_speed_mph` INT(4) DEFAULT NULL,
+  `engine_power_bhp` INT(5) DEFAULT NULL,
+  `engine_size` VARCHAR(5) DEFAULT NULL,
+  `startPrice` decimal(8,2) NOT NULL,
+  `reservePrice` decimal(8,2) DEFAULT NULL,
+  `startDate` datetime NOT NULL,
+  `endDate` datetime NOT NULL,
+  `active` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`itemID`),
+  ADD KEY `fk_categoryID_items` (`categoryID`),
+  ADD KEY `fk_sellerID_items` (`sellerID`);
+
+
+ALTER TABLE `items`
+  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT;
+
+
+ALTER TABLE `items`
+  ADD CONSTRAINT `fk_categoryID_items` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`),
+  ADD CONSTRAINT `fk_sellerID_items` FOREIGN KEY (`sellerID`) REFERENCES `seller` (`sellerID`);

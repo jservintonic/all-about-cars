@@ -1,0 +1,56 @@
+--
+-- Database: `auction`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `itemID` int(11) NOT NULL,
+  `itemName` varchar(20) NOT NULL,
+  `sellerID` int(11) NOT NULL,
+  `description` text NOT NULL,
+  `categoryID` int(5) NOT NULL,
+  `conditionOfUse` varchar(100) NOT NULL,
+  `startPrice` decimal(8,2) NOT NULL,
+  `reservePrice` decimal(8,2) NOT NULL,
+  `startDate` datetime NOT NULL,
+  `endDate` datetime NOT NULL,
+  `active` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`itemID`),
+  ADD KEY `fk_categoryID_items` (`categoryID`),
+  ADD KEY `fk_sellerID_items` (`sellerID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `items`
+--
+ALTER TABLE `items`
+  ADD CONSTRAINT `fk_categoryID_items` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`),
+  ADD CONSTRAINT `fk_sellerID_items` FOREIGN KEY (`sellerID`) REFERENCES `seller` (`sellerID`);

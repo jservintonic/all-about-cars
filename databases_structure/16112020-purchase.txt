@@ -1,0 +1,22 @@
+-- Database: `auction`
+
+-- --------------------------------------------------------
+
+
+CREATE TABLE `purchase` (
+  `purchaseID` int(11) NOT NULL,
+  `bidID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `purchase`
+  ADD PRIMARY KEY (`purchaseID`),
+  ADD UNIQUE KEY `unique_bidID` (`bidID`);
+
+
+ALTER TABLE `purchase`
+  MODIFY `purchaseID` int(11) NOT NULL AUTO_INCREMENT;
+
+
+ALTER TABLE `purchase`
+  ADD CONSTRAINT `fk_bidID_purchase` FOREIGN KEY (`bidID`) REFERENCES `bids` (`bidID`);

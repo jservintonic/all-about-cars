@@ -1,0 +1,49 @@
+-- Database: `auction`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bids`
+--
+
+CREATE TABLE `bids` (
+  `auctionID` int(11) NOT NULL,
+  `buyerID` int(11) NOT NULL,
+  `itemID` int(11) NOT NULL,
+  `bidPrice` decimal(8,2) NOT NULL,
+  `bidDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `bids`
+--
+ALTER TABLE `bids`
+  ADD PRIMARY KEY (`auctionID`),
+  ADD KEY `fk_buyerID_bids` (`buyerID`),
+  ADD KEY `fk_itemID_bids` (`itemID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bids`
+--
+ALTER TABLE `bids`
+  MODIFY `auctionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `bids`
+--
+ALTER TABLE `bids`
+  ADD CONSTRAINT `fk_buyerID_bids` FOREIGN KEY (`buyerID`) REFERENCES `buyer` (`buyerID`),
+  ADD CONSTRAINT `fk_itemID_bids` FOREIGN KEY (`itemID`) REFERENCES `items` (`itemID`);

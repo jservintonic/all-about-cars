@@ -1,0 +1,49 @@
+--
+-- Database: `auction`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchase`
+--
+
+CREATE TABLE `purchase` (
+  `purchaseID` int(11) NOT NULL,
+  `itemID` int(11) NOT NULL,
+  `buyerEmail` varchar(30) NOT NULL,
+  `purchaseDate`datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `purchase`
+--
+ALTER TABLE `purchase`
+  ADD PRIMARY KEY (`purchaseID`),
+  ADD KEY `fk_buyerEmail_purchase` (`buyerEmail`),
+  ADD KEY `fk_itemID_purchase` (`itemID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `purchase`
+--
+ALTER TABLE `purchase`
+  MODIFY `purchaseID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `purchase`
+--
+ALTER TABLE `purchase`
+  ADD CONSTRAINT `fk_buyerEmail_purchase` FOREIGN KEY (`buyerEmail`) REFERENCES `buyer` (`email`),
+  ADD CONSTRAINT `fk_itemID_purchase` FOREIGN KEY (`itemID`) REFERENCES `items` (`itemID`);

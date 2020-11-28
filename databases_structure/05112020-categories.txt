@@ -1,0 +1,21 @@
+-- Database: `auction`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `categoryID` int(2) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `categoryName` varchar(65) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `category`
+--

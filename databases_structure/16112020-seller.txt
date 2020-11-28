@@ -1,0 +1,26 @@
+--
+-- Database: `auction`
+--
+
+-- --------------------------------------------------------
+
+CREATE TABLE `seller` (
+  `sellerID` int(11) NOT NULL,
+  `fName` varchar(15) NOT NULL,
+  `lName` varchar(15) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phoneNo` varchar(15) DEFAULT NULL,
+  `street` varchar(20) DEFAULT NULL,
+  `city` varchar(20) DEFAULT NULL,
+  `postcode` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `seller`
+  ADD PRIMARY KEY (`sellerID`),
+  ADD UNIQUE KEY `email` (`email`);
+
+
+ALTER TABLE `seller`
+  MODIFY `sellerID` int(11) NOT NULL AUTO_INCREMENT;

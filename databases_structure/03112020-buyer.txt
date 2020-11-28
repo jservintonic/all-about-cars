@@ -1,0 +1,35 @@
+--
+-- Database: `auction`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `buyer`
+--
+
+CREATE TABLE `buyer` (
+  `buyerID` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `fName` varchar(15) NOT NULL,
+  `lName` varchar(15) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phoneNo` varchar(15) DEFAULT NULL,
+  `street` varchar(20) DEFAULT NULL,
+  `city` varchar(20) DEFAULT NULL,
+  `postcode` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `buyer`
+--
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `buyer`
+--
+
+

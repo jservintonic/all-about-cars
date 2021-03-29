@@ -14,7 +14,7 @@ Languages:
 - HTML / CSS
 - SQL
 
-![alt text](https://github.com/mitrotasios/all-about-cars/images/demo1.png)
+![](./images/demo1.png)
 
 
 

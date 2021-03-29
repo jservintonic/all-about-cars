@@ -1,4 +1,4 @@
-# Auction Website for cars.
+# Auction Website for cars
 A university project for which we built an auction website for cars.
 
 Features:
